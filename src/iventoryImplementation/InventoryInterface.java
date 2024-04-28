@@ -14,9 +14,9 @@ public interface InventoryInterface {
 
     void saveDataToFile(); // Adatok fájlba írása.
 
-    void loadProductsFromFile(); //Termékek fájlból olvasása.
+    void loadProductsFromFile(); // Termékek fájlból olvasása.
 
-    void loadCustomersFromFile(); //Ügyféladatok fájlból olvasása.
+    void loadCustomersFromFile(); // Ügyféladatok fájlból olvasása.
 
     void loadTransactionsFromFile(); // Tranzakcióadatok fájlból olvasása
 }

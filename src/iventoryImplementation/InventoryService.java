@@ -295,7 +295,7 @@ public class InventoryService implements InventoryInterface {
     //-----4.MENÜPONT VÉGE-----//
 
 
-    //-----5.MENÜPONT VÉGE-----//
+    //-----5.MENÜPONT-----//
     @Override // Megjeleníti az összes tranzakciót.
     public void displayTransactionList(String text) {
         System.out.println(text);
@@ -313,7 +313,7 @@ public class InventoryService implements InventoryInterface {
     //-----5.MENÜPONT VÉGE-----//
 
 
-    //-----6.MENÜPONT VÉGE-----//
+    //-----6.MENÜPONT-----//
     @Override // Adatok fájlba írása.
     public void saveDataToFile() {
         // Az árukészlet fájlba írása
