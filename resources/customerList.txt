@@ -3,7 +3,7 @@ Kocsis Zoltán,17520,cID2088505
 Kovács Ágnes,4725,cID5513060
 Szabó Tibor,10800,cID6067122
 Lakatos Regina,3375,cID1506683
-Dallos Jenö,6000,cID6232706
+Dallos Jenö,6894,cID6232706
 Váradi Zsolt,13050,cID7606389
 Temesi Szabolcs,9000,cID9168098
 Kovács Tibor,4350,cID9010969

@@ -9,7 +9,8 @@ public class Main_InventoryManagement {
         inventoryService.loadTransactionsFromFile();
         inventoryService.loadCustomersFromFile();
 
-        Menu.transactionSelector(Menu.menu("\n\nÜdvözöllek a készletnyilvántartó rendszerben!" +
+        Menu menu = new Menu();
+        menu.transactionSelector(menu.menuSelection("\n\nÜdvözöllek a készletnyilvántartó rendszerben!" +
                 GREEN_UNDERLINED.getColorCode() + "\n\nAz alábbi menüpontok közül választhatsz:" + RESET.getColorCode()));
     }
 }

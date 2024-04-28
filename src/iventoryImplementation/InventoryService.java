@@ -25,7 +25,7 @@ public class InventoryService implements InventoryInterface {
     private int customerIndex = 0;
 
     //-----1.MENÜPONT-----//
-    @Override //A termék eladásának folyamatát kezelő metódus
+    @Override // A termék eladásának folyamatát kezelő metódus
     public void sellProduct(String text) {
         System.out.println(text);
         String isAnotherSearch;
@@ -303,7 +303,6 @@ public class InventoryService implements InventoryInterface {
             System.out.println("Jelenleg nincs tranzakció a nyilvántartásban!");
         } else {
             System.out.println(GREEN.getColorCode() + "Összesen " + SalesTransaction.transactionList.size() + " tranzakció szerepel a nyilvántartásban:" + RESET.getColorCode());
-
             for (SalesTransaction item : SalesTransaction.transactionList) {
                 System.out.println(item.getTransactionId() + ", Dátum: " + item.getTransactionDate() + ", Termék: " + item.getProduct() + ", Mennyiség: " + item.getQuantitySold() + ", Fizetett összeg: " + item.getQuantitySold() + " * " + item.getUnitPrice() + " = " + (item.getQuantitySold() * item.getUnitPrice()) + " HUF, Vásárló: " + item.getCustomer() + " (" + item.getCustId() + ")");
             }
@@ -321,51 +320,34 @@ public class InventoryService implements InventoryInterface {
         Product product = new Product();
         for (Product item : product.productList) {
             productListContent = productListContent + item.getProductName() + "," + item.getProductCode() + "," + item.getUnitPrice() + "," + item.getAvailableQuantity() + System.lineSeparator();
-            try {
-                new File("resources").mkdirs();
-                Files.write(Paths.get("resources/inventoryList.txt"), productListContent.getBytes("ISO-8859-1"));
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
         }
+        Utils utils = new Utils();
+        utils.writeToFile(productListContent, "resources/inventoryList.txt");
 
         // A tranzakciók fájlba írása
         String transactionListContent = "";
         for (SalesTransaction item : SalesTransaction.transactionList) {
             transactionListContent = transactionListContent + item.getTransactionId() + "," + item.getTransactionDate() + "," + item.getProduct() + "," + item.getQuantitySold() + "," + item.getUnitPrice() + "," + item.getCustomer() + "," + item.getCustId() + System.lineSeparator();
-            try {
-                new File("resources").mkdirs();
-                Files.write(Paths.get("resources/transactionList.txt"), transactionListContent.getBytes("ISO-8859-1"));
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
         }
+        utils.writeToFile(transactionListContent, "resources/transactionList.txt");
 
         // Az ügyfelek fájlba írása
         String customerListContent = "";
         for (Customer item : Customer.customerList) {
             customerListContent = customerListContent + item.getCustomerName() + "," + item.getTotalPurchases() + "," + item.getCustomerID() + System.lineSeparator();
-            try {
-                new File("resources").mkdirs();
-                Files.write(Paths.get("resources/customerList.txt"), customerListContent.getBytes("ISO-8859-1"));
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
         }
+        utils.writeToFile(customerListContent, "resources/customerList.txt");
         System.out.println("Az adatok elmentésre kerültek...");
     }
+    //-----6.MENÜPONT VÉGE-----//
 
-    @Override //Termékek fájlból olvasása.
+
+    //-----ADATOK FÁJLBÓL LISTÁBA OLVASÁSA-----//
+    @Override // Termékek fájlból olvasása
     public void loadProductsFromFile() {
-        List<String> result = new ArrayList<>();
         System.out.print("Checking the database of products : ");
-        try {
-            Charset charset = Charset.forName("ISO-8859-1");
-            result = Files.readAllLines(Paths.get("resources/inventoryList.txt"), charset);
-            System.out.println(GREEN.getColorCode() + "OK.." + RESET.getColorCode());
-        } catch (IOException e) {
-            System.out.println(RED.getColorCode() + "COULD NOT BE FOUND!" + RESET.getColorCode());
-        }
+        Utils utils = new Utils();
+        List<String> result = utils.readFromFile("resources/inventoryList.txt");
         for (String row : result) {
             String[] rowData = row.split(",");
             String prod = rowData[0];
@@ -377,17 +359,11 @@ public class InventoryService implements InventoryInterface {
         }
     }
 
-    @Override //Ügyféladatok fájlból olvasása.
+    @Override // Ügyféladatok fájlból olvasása
     public void loadCustomersFromFile() {
-        List<String> result = new ArrayList<>();
         System.out.print("Checking the database of customers: ");
-        try {
-            Charset charset = Charset.forName("ISO-8859-1");
-            result = Files.readAllLines(Paths.get("resources/customerList.txt"), charset);
-            System.out.println(GREEN.getColorCode() + "OK.." + RESET.getColorCode());
-        } catch (IOException e) {
-            System.out.println(RED.getColorCode() + "COULD NOT BE FOUND!" + RESET.getColorCode());
-        }
+        Utils utils = new Utils();
+        List<String> result = utils.readFromFile("resources/customerList.txt");
         for (String row : result) {
             String[] rowData = row.split(",");
             String customerName = rowData[0];
@@ -400,15 +376,9 @@ public class InventoryService implements InventoryInterface {
 
     @Override // Tranzakcióadatok fájlból olvasása
     public void loadTransactionsFromFile() {
-        List<String> result = new ArrayList<>();
         System.out.print("Checking the database of transactions : ");
-        try {
-            Charset charset = Charset.forName("ISO-8859-1");
-            result = Files.readAllLines(Paths.get("resources/transactionList.txt"), charset);
-            System.out.println(GREEN.getColorCode() + "OK.." + RESET.getColorCode());
-        } catch (IOException e) {
-            System.out.println(RED.getColorCode() + "COULD NOT BE FOUND!" + RESET.getColorCode());
-        }
+        Utils utils = new Utils();
+        List<String> result = utils.readFromFile("resources/transactionList.txt");
         for (String row : result) {
             String[] rowData = row.split(",");
             String transactionId = rowData[0];
@@ -422,5 +392,5 @@ public class InventoryService implements InventoryInterface {
             SalesTransaction.transactionList.add(salesTransaction);
         }
     }
-    //-----6.MENÜPONT VÉGE-----//
+    //-----ADATOK FÁJLBÓL LISTÁBA OLVASÁSÁNAK VÉGE-----//
 }

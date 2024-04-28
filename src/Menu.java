@@ -3,7 +3,7 @@ import util.ErrorHandling;
 
 public class Menu {
 
-    static int menu(String text) {
+    static int menuSelection(String text) {
         System.out.print(text);
         int userChoice;
         do {
@@ -44,7 +44,7 @@ public class Menu {
                 break;
         }
         if (userChoice != 6) {
-            int userChoiceAgain = menu("\n-FŐMENÜ-\n");
+            int userChoiceAgain = menuSelection("\n-FŐMENÜ-\n");
             transactionSelector(userChoiceAgain);
         }
     }
