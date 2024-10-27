@@ -20,12 +20,12 @@ import java.util.Objects;
 
 import static util.Colors.*;
 
-public class InventoryService implements InventoryInterface {
+public class InventoryService {
     private int productIndex = 0;
     private int customerIndex = 0;
 
     //-----1.MENÜPONT-----//
-    @Override // A termék eladásának folyamatát kezelő metódus
+    // A termék eladásának folyamatát kezelő metódus
     public void sellProduct(String text) {
         System.out.println(text);
         String isAnotherSearch;
@@ -156,7 +156,7 @@ public class InventoryService implements InventoryInterface {
 
 
     //-----2.MENÜPONT-----//
-    @Override // A készletfeltöltés folyamatának metódusa
+    // A készletfeltöltés folyamatának metódusa
     public void restockProduct(String text) {
         String productName;
         int unitPrice;
@@ -261,7 +261,7 @@ public class InventoryService implements InventoryInterface {
 
 
     //-----3.MENÜPONT-----//
-    @Override // Megjeleníti az összes terméket a raktárban.
+    // Megjeleníti az összes terméket a raktárban.
     public void displayProductList(String text) {
         System.out.println(text);
         Product product = new Product();
@@ -279,7 +279,7 @@ public class InventoryService implements InventoryInterface {
 
 
     //-----4.MENÜPONT-----//
-    @Override // Megjeleníti az összes ügyfelet.
+    // Megjeleníti az összes ügyfelet.
     public void displayCustomerList(String text) {
         System.out.println(text);
         if (Customer.customerList.isEmpty()) {
@@ -296,7 +296,7 @@ public class InventoryService implements InventoryInterface {
 
 
     //-----5.MENÜPONT-----//
-    @Override // Megjeleníti az összes tranzakciót.
+    // Megjeleníti az összes tranzakciót.
     public void displayTransactionList(String text) {
         System.out.println(text);
         if (SalesTransaction.transactionList.isEmpty()) {
@@ -313,7 +313,7 @@ public class InventoryService implements InventoryInterface {
 
 
     //-----6.MENÜPONT-----//
-    @Override // Adatok fájlba írása.
+    // Adatok fájlba írása.
     public void saveDataToFile() {
         // Az árukészlet fájlba írása
         String productListContent = "";
@@ -343,8 +343,8 @@ public class InventoryService implements InventoryInterface {
 
 
     //-----ADATOK FÁJLBÓL LISTÁBA OLVASÁSA-----//
-    @Override // Termékek fájlból olvasása
-    public void loadProductsFromFile() {
+    // Termékek fájlból olvasása
+    public static void loadProductsFromFile() {
         System.out.print("Checking the database of products : ");
         Utils utils = new Utils();
         List<String> result = utils.readFromFile("resources/inventoryList.txt");
@@ -359,8 +359,8 @@ public class InventoryService implements InventoryInterface {
         }
     }
 
-    @Override // Ügyféladatok fájlból olvasása
-    public void loadCustomersFromFile() {
+    // Ügyféladatok fájlból olvasása
+    public static void loadCustomersFromFile() {
         System.out.print("Checking the database of customers: ");
         Utils utils = new Utils();
         List<String> result = utils.readFromFile("resources/customerList.txt");
@@ -374,8 +374,8 @@ public class InventoryService implements InventoryInterface {
         }
     }
 
-    @Override // Tranzakcióadatok fájlból olvasása
-    public void loadTransactionsFromFile() {
+    // Tranzakcióadatok fájlból olvasása
+    public static void loadTransactionsFromFile() {
         System.out.print("Checking the database of transactions : ");
         Utils utils = new Utils();
         List<String> result = utils.readFromFile("resources/transactionList.txt");

@@ -1,5 +1,7 @@
 package util;
 
+import iventoryImplementation.InventoryService;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -13,6 +15,12 @@ import static util.Colors.*;
 import static util.Colors.RESET;
 
 public class Utils {
+
+    public static void readingData() {
+        InventoryService.loadProductsFromFile();
+        InventoryService.loadTransactionsFromFile();
+        InventoryService.loadCustomersFromFile();
+    }
 
     //-----Adatok beolvasása konzolról-----//
     public String readFromUser(String question) {
