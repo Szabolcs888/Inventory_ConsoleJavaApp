@@ -14,16 +14,7 @@ public class DataSaver {
         for (Product item : Product.productList) {
             productListContent = productListContent + item.getProductName() + "," + item.getProductCode() + "," + item.getUnitPrice() + "," + item.getAvailableQuantity() + System.lineSeparator();
         }
-        Utils.writeToFile(productListContent, "resources/inventoryList.txt");
-    }
-
-    // A tranzakciók fájlba írása
-    public static void saveTransactionsToFile() {
-        String transactionListContent = "";
-        for (SalesTransaction item : SalesTransaction.transactionList) {
-            transactionListContent = transactionListContent + item.getTransactionId() + "," + item.getTransactionDate() + "," + item.getProduct() + "," + item.getQuantitySold() + "," + item.getUnitPrice() + "," + item.getCustomer() + "," + item.getCustId() + System.lineSeparator();
-        }
-        Utils.writeToFile(transactionListContent, "resources/transactionList.txt");
+        Utils.writeToFile(productListContent, "src/main/resources/inventoryList.txt");
     }
 
     public static void saveCustomersToFile() {
@@ -32,6 +23,15 @@ public class DataSaver {
         for (Customer item : Customer.customerList) {
             customerListContent = customerListContent + item.getCustomerName() + "," + item.getTotalPurchases() + "," + item.getCustomerID() + System.lineSeparator();
         }
-        Utils.writeToFile(customerListContent, "resources/customerList.txt");
+        Utils.writeToFile(customerListContent, "src/main/resources/customerList.txt");
+    }
+
+    // A tranzakciók fájlba írása
+    public static void saveTransactionsToFile() {
+        String transactionListContent = "";
+        for (SalesTransaction item : SalesTransaction.transactionList) {
+            transactionListContent = transactionListContent + item.getTransactionId() + "," + item.getTransactionDate() + "," + item.getProduct() + "," + item.getQuantitySold() + "," + item.getUnitPrice() + "," + item.getCustomer() + "," + item.getCustId() + System.lineSeparator();
+        }
+        Utils.writeToFile(transactionListContent, "src/main/resources/transactionList.txt");
     }
 }

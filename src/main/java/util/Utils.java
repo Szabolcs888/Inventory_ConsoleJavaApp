@@ -13,8 +13,7 @@ import static main.java.util.Colors.*;
 import static main.java.util.Colors.RESET;
 
 public class Utils {
-
-
+    
     //-----Adatok beolvasása konzolról-----//
     public String readFromUser(String question) {
         Scanner scan = new Scanner(System.in);
@@ -39,7 +38,7 @@ public class Utils {
     //-----Adatok fájlba írása-----//
     public static void writeToFile(String content, String path) {
         try {
-            new File("resources").mkdirs();
+            new File("src/main/resources").mkdirs();
             Files.write(Paths.get(path), content.getBytes("ISO-8859-1"));
         } catch (IOException e) {
             throw new RuntimeException(e);
