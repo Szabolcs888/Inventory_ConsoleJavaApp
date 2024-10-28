@@ -1,7 +1,5 @@
 package main.java.util;
 
-import main.java.iventoryImplementation.InventoryService;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -16,11 +14,6 @@ import static main.java.util.Colors.RESET;
 
 public class Utils {
 
-    public static void readingData() {
-        InventoryService.loadProductsFromFile();
-        InventoryService.loadTransactionsFromFile();
-        InventoryService.loadCustomersFromFile();
-    }
 
     //-----Adatok beolvasása konzolról-----//
     public String readFromUser(String question) {
@@ -44,7 +37,7 @@ public class Utils {
     }
 
     //-----Adatok fájlba írása-----//
-    public void writeToFile(String content, String path) {
+    public static void writeToFile(String content, String path) {
         try {
             new File("resources").mkdirs();
             Files.write(Paths.get(path), content.getBytes("ISO-8859-1"));
