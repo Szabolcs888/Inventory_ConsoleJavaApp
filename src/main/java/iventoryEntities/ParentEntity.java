@@ -1,4 +1,4 @@
-package iventoryEntities;
+package main.java.iventoryEntities;
 
 import java.util.Random;
 

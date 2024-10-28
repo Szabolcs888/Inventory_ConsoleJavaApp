@@ -1,6 +1,6 @@
-package util;
+package main.java.util;
 
-import iventoryImplementation.InventoryService;
+import main.java.iventoryImplementation.InventoryService;
 
 import java.io.File;
 import java.io.IOException;
@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import static util.Colors.*;
-import static util.Colors.RESET;
+import static main.java.util.Colors.*;
+import static main.java.util.Colors.RESET;
 
 public class Utils {
 

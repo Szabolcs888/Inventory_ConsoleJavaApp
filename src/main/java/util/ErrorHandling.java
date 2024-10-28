@@ -1,6 +1,6 @@
-package util;
+package main.java.util;
 
-import static util.Colors.*;
+import static main.java.util.Colors.*;
 
 public class ErrorHandling {
 

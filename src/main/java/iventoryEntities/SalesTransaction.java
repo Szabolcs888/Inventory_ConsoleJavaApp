@@ -1,9 +1,9 @@
-package iventoryEntities;
+package main.java.iventoryEntities;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static util.Colors.*;
+import static main.java.util.Colors.*;
 
 public class SalesTransaction extends ParentEntity {
     protected String transactionId = "trId" + generateId();
@@ -103,7 +103,7 @@ public class SalesTransaction extends ParentEntity {
 
     @Override
     public String toString() {
-        return "iventoryEntities.SalesTransaction{" +
+        return "main.java.iventoryEntities.SalesTransaction{" +
                 "product='" + product + '\'' +
                 ", customer='" + customer + '\'' +
                 ", quantitySold=" + quantitySold +

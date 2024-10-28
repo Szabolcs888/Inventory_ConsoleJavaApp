@@ -1,24 +1,18 @@
-package iventoryImplementation;
+package main.java.iventoryImplementation;
 
-import iventoryEntities.Customer;
-import iventoryEntities.ParentEntity;
-import iventoryEntities.Product;
-import iventoryEntities.SalesTransaction;
-import util.ErrorHandling;
-import util.Utils;
+import main.java.iventoryEntities.Customer;
+import main.java.iventoryEntities.ParentEntity;
+import main.java.iventoryEntities.Product;
+import main.java.iventoryEntities.SalesTransaction;
+import main.java.util.ErrorHandling;
+import main.java.util.Utils;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import static util.Colors.*;
+import static main.java.util.Colors.*;
 
 public class InventoryService {
     private int productIndex = 0;

@@ -1,9 +1,9 @@
-package iventoryEntities;
+package main.java.iventoryEntities;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static util.Colors.*;
+import static main.java.util.Colors.*;
 
 public class Product extends ParentEntity {
     public String productName;
@@ -81,7 +81,7 @@ public class Product extends ParentEntity {
 
     @Override
     public String toString() {
-        return "iventoryEntities.Product{" +
+        return "main.java.iventoryEntities.Product{" +
                 "productName='" + productName + '\'' +
                 ", productCode='" + productCode + '\'' +
                 ", unitPrice=" + unitPrice +

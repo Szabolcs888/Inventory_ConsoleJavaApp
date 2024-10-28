@@ -1,4 +1,4 @@
-package iventoryEntities;
+package main.java.iventoryEntities;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +41,7 @@ public class Customer extends ParentEntity {
 
     @Override
     public String toString() {
-        return "iventoryEntities.Customer{" +
+        return "main.java.iventoryEntities.Customer{" +
                 "customerName='" + customerName + '\'' +
                 ", totalPurchases=" + totalPurchases +
                 ", customerID='" + customerID + '\'' +

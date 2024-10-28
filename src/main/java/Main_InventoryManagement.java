@@ -1,7 +1,9 @@
-import iventoryImplementation.InventoryService;
-import util.ErrorHandling;
-import util.Utils;
-import static util.Colors.*;
+package main.java;
+
+import main.java.iventoryImplementation.InventoryService;
+import main.java.util.ErrorHandling;
+import main.java.util.Utils;
+import static main.java.util.Colors.*;
 
 public class Main_InventoryManagement {
     public static void main(String[] args) {
