@@ -341,7 +341,7 @@ public class InventoryService {
     public static void loadProductsFromFile() {
         System.out.print("Checking the database of products : ");
         Utils utils = new Utils();
-        List<String> result = utils.readFromFile("resources/inventoryList.txt");
+        List<String> result = utils.readFromFile("src/main/resources/inventoryList.txt");
         for (String row : result) {
             String[] rowData = row.split(",");
             String prod = rowData[0];
@@ -357,7 +357,7 @@ public class InventoryService {
     public static void loadCustomersFromFile() {
         System.out.print("Checking the database of customers: ");
         Utils utils = new Utils();
-        List<String> result = utils.readFromFile("resources/customerList.txt");
+        List<String> result = utils.readFromFile("src/main/resources/customerList.txt");
         for (String row : result) {
             String[] rowData = row.split(",");
             String customerName = rowData[0];
@@ -372,7 +372,7 @@ public class InventoryService {
     public static void loadTransactionsFromFile() {
         System.out.print("Checking the database of transactions : ");
         Utils utils = new Utils();
-        List<String> result = utils.readFromFile("resources/transactionList.txt");
+        List<String> result = utils.readFromFile("src/main/resources/transactionList.txt");
         for (String row : result) {
             String[] rowData = row.split(",");
             String transactionId = rowData[0];
