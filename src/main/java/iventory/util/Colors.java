@@ -1,4 +1,4 @@
-package main.java.util;
+package iventory.util;
 
 public enum Colors {
     RESET("\033[0m"),

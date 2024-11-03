@@ -1,29 +1,30 @@
-package main.java;
+package iventory;
 
-import main.java.data.DataLoader;
-import main.java.iventoryImplementation.*;
-import main.java.util.ErrorHandling;
-import main.java.util.Utils;
-import static main.java.util.Colors.*;
+import iventory.dataIO.DataLoader;
+import iventory.iventoryImplementation.*;
+import iventory.util.ErrorHandler;
 
-public class Main_InventoryManagement {
+import static iventory.util.Colors.*;
+
+public class InventoryApp {
+
     public static void main(String[] args) {
         DataLoader.loadAllData();
-        transactionSelector(menuSelection(getWelcomeMessage1() + GREEN_UNDERLINED.getColorCode() + getWelcomeMessage2() + RESET.getColorCode()));
+        int userChoice = menuSelection(getWelcomeMessage());
+        transactionSelector(userChoice);
     }
 
     private static int menuSelection(String text) {
         System.out.print(text);
         int userChoice;
         do {
-            ErrorHandling errorHandling = new ErrorHandling();
-            userChoice = errorHandling.validNumberPls(System.lineSeparator() +
-                    "1. Termék eladása" + System.lineSeparator() +
-                    "2. Termék bevételezése" + System.lineSeparator() +
-                    "3. Elérhető termékek megjelenítése" + System.lineSeparator() +
-                    "4. Ügyfelek megjelenítése" + System.lineSeparator() +
-                    "5. Tranzakciók megjelenítése" + System.lineSeparator() +
-                    "6. Save and Exit" + System.lineSeparator());
+            userChoice = ErrorHandler.getValidNumber(
+                    "\n1. Termék eladása\n" +
+                            "2. Termék bevételezése\n" +
+                            "3. Elérhető termékek megjelenítése\n" +
+                            "4. Ügyfelek megjelenítése\n" +
+                            "5. Tranzakciók megjelenítése\n" +
+                            "6. Mentés és Kilépés\n");
             if (userChoice < 1 || userChoice > 6)
                 System.out.println("1-től 6-ig tudsz választani!");
         } while (userChoice < 1 || userChoice > 6);
@@ -37,8 +38,8 @@ public class Main_InventoryManagement {
                 menuOption1Sell.sellProduct("\n-TERMÉK ELADÁSA MENÜ-\n");
                 break;
             case 2:
-                MenuOption2Addition menuOption2Addition = new MenuOption2Addition();
-                menuOption2Addition.restockProduct("\n-TERMÉK BEVÉTELEZÉSE MENÜ-\n");
+                MenuOption2GoodsReceipt menuOption2GoodsReceipt = new MenuOption2GoodsReceipt();
+                menuOption2GoodsReceipt.goodsReceipt("\n-TERMÉK BEVÉTELEZÉSE MENÜ-\n");
                 break;
             case 3:
                 MenuOption3DisplayProducts menuOption3DisplayProducts = new MenuOption3DisplayProducts();
@@ -49,7 +50,7 @@ public class Main_InventoryManagement {
                 menuOption4DisplayCustomers.displayCustomerList("\n-ÜGYFELEK MEGJELENÍTÉSE MENÜ-\n");
                 break;
             case 5:
-                MenuOption5DisplayTransactions menuOption5DisplayTransactions =new MenuOption5DisplayTransactions();
+                MenuOption5DisplayTransactions menuOption5DisplayTransactions = new MenuOption5DisplayTransactions();
                 menuOption5DisplayTransactions.displayTransactionList("\n-TRANZAKCIÓK MEGJELENÍTÉSE MENÜ-\n");
                 break;
             case 6:
@@ -63,13 +64,9 @@ public class Main_InventoryManagement {
         }
     }
 
-    private static String getWelcomeMessage1() {
-        String welcomeMessage1 = "\n\nÜdvözöllek a készletnyilvántartó rendszerben!";
-        return welcomeMessage1;
-    }
-
-    private static String getWelcomeMessage2() {
-        String welcomeMessage2 = "\n\nAz alábbi menüpontok közül választhatsz:";
-        return welcomeMessage2;
+    private static String getWelcomeMessage() {
+        String welcomeMessage = "\n\nÜdvözöllek a készletnyilvántartó rendszerben!" +
+                GREEN_UNDERLINED.getColorCode() + "\n\nAz alábbi menüpontok közül választhatsz:" + RESET.getColorCode();
+        return welcomeMessage;
     }
 }

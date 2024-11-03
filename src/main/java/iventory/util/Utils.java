@@ -1,28 +1,28 @@
-package main.java.util;
+package iventory.util;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
-import static main.java.util.Colors.*;
-import static main.java.util.Colors.RESET;
+import static iventory.util.Colors.*;
 
 public class Utils {
-    
-    //-----Adatok beolvasása konzolról-----//
-    public String readFromUser(String question) {
-        Scanner scan = new Scanner(System.in);
+
+    public static String readFromUser(String question) {
+        Scanner scanner = new Scanner(System.in);
         System.out.println(question);
-        return scan.nextLine().trim();
+        return scanner.nextLine().trim();
     }
 
-    //-----Adatok beolvasása fájlból-----//
-    public List<String> readFromFile (String path) {
+    public static List<String> readFromFile(String path) {
         List<String> result = new ArrayList<>();
         try {
             Charset charset = Charset.forName("ISO-8859-1");
@@ -35,7 +35,6 @@ public class Utils {
         return result;
     }
 
-    //-----Adatok fájlba írása-----//
     public static void writeToFile(String content, String path) {
         try {
             new File("src/main/resources").mkdirs();
@@ -43,5 +42,20 @@ public class Utils {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static int generateId() {
+        Random random = new Random();
+        return random.nextInt(1000000, 9999999) + 1;
+    }
+
+    public static boolean isValidName(String customerName) {
+        return customerName.length() >= 3 && !customerName.contains(",");
+    }
+
+    public static String getCurrentFormattedDate() {
+        LocalDateTime nowDateTime = LocalDateTime.now();
+        DateTimeFormatter customFormat = DateTimeFormatter.ofPattern("yyyy.MM.dd. HH:mm:ss");
+        return nowDateTime.format(customFormat);
     }
 }

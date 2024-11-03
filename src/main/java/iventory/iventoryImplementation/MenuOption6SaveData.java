@@ -1,6 +1,6 @@
-package main.java.iventoryImplementation;
+package iventory.iventoryImplementation;
 
-import main.java.data.DataSaver;
+import iventory.dataIO.DataSaver;
 
 public class MenuOption6SaveData {
 
