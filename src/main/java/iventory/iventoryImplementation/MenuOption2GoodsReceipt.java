@@ -2,9 +2,8 @@ package iventory.iventoryImplementation;
 
 import iventory.dataStorage.ProductRepository;
 import iventory.iventoryEntities.Product;
-import iventory.util.ErrorHandler;
+import iventory.util.*;
 import iventory.util.displayHelpers.ProductDisplayHelper;
-import iventory.util.Utils;
 
 import java.util.List;
 
@@ -29,14 +28,14 @@ public class MenuOption2GoodsReceipt {
     private String getProductName() {
         String inputProductName;
         do {
-            inputProductName = Utils.readFromUser("Kérem a termék nevét:");
+            inputProductName = UserInputUtils.readFromUser("Kérem a termék nevét:");
             ErrorHandler.validateName(inputProductName);
-        } while (!Utils.isValidName(inputProductName));
+        } while (!ValidationUtils.isValidName(inputProductName));
         return inputProductName;
     }
 
     private void addNewProduct(String productName) {
-        String productId = "pr" + Utils.generateId();
+        String productId = "pr" + IdUtils.generateId();
         int unitPrice = getProductPrice();
         int quantity = getProductQuantity();
         Product newProduct = new Product(productName, productId, unitPrice, quantity);

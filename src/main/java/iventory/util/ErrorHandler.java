@@ -9,7 +9,7 @@ public class ErrorHandler {
         int validNumber = 0;
         do {
             try {
-                validNumber = Integer.parseInt(Utils.readFromUser(text));
+                validNumber = Integer.parseInt(UserInputUtils.readFromUser(text));
                 isNumberValid = true;
             } catch (NumberFormatException e) {
                 System.out.println(RED.getColorCode() + "Valós számot kérek!" + RESET.getColorCode());
@@ -22,7 +22,7 @@ public class ErrorHandler {
     public static String getYesOrNoAnswer(String question) {
         String yesOrNoAnswer;
         do {
-            yesOrNoAnswer = Utils.readFromUser("\n" + question);
+            yesOrNoAnswer = UserInputUtils.readFromUser("\n" + question);
             if (!yesOrNoAnswer.equalsIgnoreCase("I") && !yesOrNoAnswer.equalsIgnoreCase("N")) {
                 System.out.println(RED.getColorCode() + "IGEN vagy NEM választ kérek!" + RESET.getColorCode());
             }
@@ -33,7 +33,7 @@ public class ErrorHandler {
     public static String getYesOrNoOrDeleteAnswer(String question) {
         String yesOrNoOrDeleteAnswer;
         do {
-            yesOrNoOrDeleteAnswer = Utils.readFromUser("\n" + question);
+            yesOrNoOrDeleteAnswer = UserInputUtils.readFromUser("\n" + question);
             if (!yesOrNoOrDeleteAnswer.equalsIgnoreCase("I") &&
                     !yesOrNoOrDeleteAnswer.equalsIgnoreCase("N") &&
                     !yesOrNoOrDeleteAnswer.equalsIgnoreCase("T")) {

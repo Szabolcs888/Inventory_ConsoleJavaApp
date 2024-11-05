@@ -6,9 +6,8 @@ import iventory.dataStorage.SalesTransactionRepository;
 import iventory.iventoryEntities.Customer;
 import iventory.iventoryEntities.Product;
 import iventory.iventoryEntities.SalesTransaction;
-import iventory.util.ErrorHandler;
+import iventory.util.*;
 import iventory.util.displayHelpers.ProductDisplayHelper;
-import iventory.util.Utils;
 import iventory.util.displayHelpers.TransactionDisplayHelper;
 
 import java.util.List;
@@ -51,25 +50,25 @@ public class MenuOption1Sell {
     private String getCustomerName() {
         String customerName;
         do {
-            customerName = Utils.readFromUser("Kérem a vásárló nevét:");
+            customerName = UserInputUtils.readFromUser("Kérem a vásárló nevét:");
             ErrorHandler.validateName(customerName);
-        } while (!Utils.isValidName(customerName));
+        } while (!ValidationUtils.isValidName(customerName));
         return customerName;
     }
 
     private String getProductName() {
         String inputProductName;
-        boolean isProductInList = false;
+        boolean isProductInList;
         boolean isAvailableQuantityZero;
         do {
             isAvailableQuantityZero = false;
-            inputProductName = Utils.readFromUser("\nKérem az eladandó termék nevét:");
+            inputProductName = UserInputUtils.readFromUser("\nKérem az eladandó termék nevét:");
             productIndex = 0;
             List<Product> productList = ProductRepository.getProductList();
             Product foundProduct = findProductByName(productList, inputProductName);
             if (foundProduct != null) {
-                isProductInList = true;
                 ProductDisplayHelper.displayProductInfoIfProductFound(foundProduct);
+                isProductInList = true;
                 if (foundProduct.getQuantity() == 0) {
                     ProductDisplayHelper.displayOutOfStockMessage();
                     isAvailableQuantityZero = true;
@@ -135,7 +134,7 @@ public class MenuOption1Sell {
     }
 
     private String registerNewCustomer(String customerName, int quantitySold) {
-        String customerId = "cID" + Utils.generateId();
+        String customerId = "cID" + IdUtils.generateId();
         Product product = ProductRepository.getProductList().get(productIndex);
         Customer newCustomer = new Customer(customerName, customerId, product.getUnitPrice() * quantitySold);
         CustomerRepository.addCustomer(newCustomer);
@@ -144,8 +143,8 @@ public class MenuOption1Sell {
 
     private void transactionRegistration(boolean isRegisteredCustomer, String customerName, String customerId, String productName, int quantitySold) {
         int unitPrice = ProductRepository.getProductList().get(productIndex).getUnitPrice();
-        String transactionId = "trId" + Utils.generateId();
-        String transactionDate = Utils.getCurrentFormattedDate();
+        String transactionId = "trId" + IdUtils.generateId();
+        String transactionDate = DateUtils.getCurrentFormattedDate();
         SalesTransaction salesTransaction = new SalesTransaction(
                 transactionId, customerName, customerId, productName, quantitySold, unitPrice, transactionDate);
         System.out.println();
