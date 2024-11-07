@@ -13,4 +13,3 @@ public class MenuOption3DisplayProducts {
         ProductDisplayHelper.displayProductList(productList, text);
     }
 }
-

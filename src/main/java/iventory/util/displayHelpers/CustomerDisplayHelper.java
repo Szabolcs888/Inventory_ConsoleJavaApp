@@ -12,13 +12,13 @@ public class CustomerDisplayHelper {
     public static void displayCustomerList(List<Customer> customerList, String text) {
         System.out.println(text);
         if (CustomerRepository.customerList.isEmpty()) {
-            System.out.println("Jelenleg nincs regisztrált ügyfél a nyilvántartásban!");
+            System.out.println("There are currently no registered customers in the inventory!");
         } else {
-            System.out.println(GREEN.getColorCode() + "Összesen " + CustomerRepository.customerList.size() +
-                    " regisztrált ügyfél szerepel a nyilvántartásban:" + RESET.getColorCode());
+            System.out.println(GREEN.getColorCode() + "There are a total of " + CustomerRepository.customerList.size() +
+                    " registered customers in the inventory:" + RESET.getColorCode());
             for (Customer item : customerList) {
-                System.out.println("Név: " + item.getCustomerName() + " (" + item.getCustomerId() +
-                        "), Összes vásárlás: " + item.getTotalPurchases() + " HUF");
+                System.out.println("Name: " + item.getCustomerName() + " (" + item.getCustomerId() +
+                        "), Total purchases: " + item.getTotalPurchases() + " HUF");
             }
         }
         System.out.println();

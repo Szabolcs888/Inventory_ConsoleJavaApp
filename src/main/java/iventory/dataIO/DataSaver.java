@@ -15,7 +15,7 @@ public class DataSaver {
         for (Product item : ProductRepository.productList) {
             productListContent = productListContent + item.getProductName() + "," + item.getProductId() + "," + item.getUnitPrice() + "," + item.getQuantity() + "\n";
         }
-        FileUtils.writeToFile(productListContent, "src/main/resources/productList.txt");
+        FileUtils.writeToFile(productListContent, "src/main/resources/inventoryData/productList.txt");
     }
 
     public static void saveCustomersToFile() {
@@ -23,7 +23,7 @@ public class DataSaver {
         for (Customer item : CustomerRepository.customerList) {
             customerListContent = customerListContent + item.getCustomerName() + "," + item.getTotalPurchases() + "," + item.getCustomerId() + "\n";
         }
-        FileUtils.writeToFile(customerListContent, "src/main/resources/customerList.txt");
+        FileUtils.writeToFile(customerListContent, "src/main/resources/inventoryData/customerList.txt");
     }
 
     public static void saveTransactionsToFile() {
@@ -32,6 +32,6 @@ public class DataSaver {
             transactionListContent = transactionListContent + item.getTransactionId() + "," + item.getTransactionDate() + "," + item.getProductName() +
                     "," + item.getQuantitySold() + "," + item.getUnitPrice() + "," + item.getCustomerName() + "," + item.getCustomerId() + "\n";
         }
-        FileUtils.writeToFile(transactionListContent, "src/main/resources/transactionList.txt");
+        FileUtils.writeToFile(transactionListContent, "src/main/resources/inventoryData/transactionList.txt");
     }
 }

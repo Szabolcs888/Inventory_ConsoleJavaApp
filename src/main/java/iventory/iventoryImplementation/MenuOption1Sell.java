@@ -22,14 +22,14 @@ public class MenuOption1Sell {
         do {
             if (!ProductRepository.getProductList().isEmpty()) {
                 processSale();
-                ProductDisplayHelper.displayProductInfoAfterSellAndUpdateGoodsReceipt(productIndex, "A TERMÉK ADATAI A TRANZAKCIÓ UTÁN:");
-                askAnotherSell = ErrorHandler.getYesOrNoAnswer("Szeretnél újabb termékeladást bejegyezni? (I/N)");
+                ProductDisplayHelper.displayProductInfoAfterSellAndUpdateGoodsReceipt(productIndex, "PRODUCT DATA AFTER THE TRANSACTION:");
+                askAnotherSell = ErrorHandler.getYesOrNoAnswer("Would you like to register another sale? (Y/N)");
                 System.out.println();
             } else {
                 ProductDisplayHelper.displayNoProductsAvailableMessage();
                 askAnotherSell = "N";
             }
-        } while (askAnotherSell.equalsIgnoreCase("I"));
+        } while (askAnotherSell.equalsIgnoreCase("Y"));
     }
 
     private void processSale() {
@@ -50,7 +50,7 @@ public class MenuOption1Sell {
     private String getCustomerName() {
         String customerName;
         do {
-            customerName = UserInputUtils.readFromUser("Kérem a vásárló nevét:");
+            customerName = UserInputUtils.readFromUser("Please enter the customer's name:");
             ErrorHandler.validateName(customerName);
         } while (!ValidationUtils.isValidName(customerName));
         return customerName;
@@ -62,7 +62,7 @@ public class MenuOption1Sell {
         boolean isAvailableQuantityZero;
         do {
             isAvailableQuantityZero = false;
-            inputProductName = UserInputUtils.readFromUser("\nKérem az eladandó termék nevét:");
+            inputProductName = UserInputUtils.readFromUser("\nPlease enter the name of the product to be sold:");
             productIndex = 0;
             List<Product> productList = ProductRepository.getProductList();
             Product foundProduct = findProductByName(productList, inputProductName);
@@ -95,7 +95,7 @@ public class MenuOption1Sell {
         int quantitySold = 0;
         int availableQuantity = ProductRepository.getProductList().get(productIndex).getQuantity();
         while (availableQuantity - quantitySold < 0 || quantitySold < 1) {
-            quantitySold = ErrorHandler.getValidNumber("\nKérem az eladandó mennyiséget:");
+            quantitySold = ErrorHandler.getValidNumber("\nPlease enter the quantity to be sold:");
             ProductDisplayHelper.displayProductQuantityErrorMessage(productIndex, productName, availableQuantity, quantitySold);
         }
         return quantitySold;

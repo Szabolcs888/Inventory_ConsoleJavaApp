@@ -15,5 +15,4 @@ public class CustomerRepository {
     public static List<Customer> getCustomerList() {
         return customerList;
     }
-
 }

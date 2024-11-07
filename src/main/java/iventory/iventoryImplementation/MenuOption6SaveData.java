@@ -8,6 +8,6 @@ public class MenuOption6SaveData {
         DataSaver.saveProductsToFile();
         DataSaver.saveCustomersToFile();
         DataSaver.saveTransactionsToFile();
-        System.out.println("Az adatok elmentésre kerültek...");
+        System.out.println("Data has been saved..");
     }
 }

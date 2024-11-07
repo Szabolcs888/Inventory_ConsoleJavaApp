@@ -12,7 +12,7 @@ public class ErrorHandler {
                 validNumber = Integer.parseInt(UserInputUtils.readFromUser(text));
                 isNumberValid = true;
             } catch (NumberFormatException e) {
-                System.out.println(RED.getColorCode() + "Valós számot kérek!" + RESET.getColorCode());
+                System.out.println(RED.getColorCode() + "Please enter a valid number!" + RESET.getColorCode());
                 isNumberValid = false;
             }
         } while (!isNumberValid);
@@ -23,10 +23,10 @@ public class ErrorHandler {
         String yesOrNoAnswer;
         do {
             yesOrNoAnswer = UserInputUtils.readFromUser("\n" + question);
-            if (!yesOrNoAnswer.equalsIgnoreCase("I") && !yesOrNoAnswer.equalsIgnoreCase("N")) {
-                System.out.println(RED.getColorCode() + "IGEN vagy NEM választ kérek!" + RESET.getColorCode());
+            if (!yesOrNoAnswer.equalsIgnoreCase("Y") && !yesOrNoAnswer.equalsIgnoreCase("N")) {
+                System.out.println(RED.getColorCode() + "Please enter \"YES\" or \"NO\"!" + RESET.getColorCode());
             }
-        } while (!yesOrNoAnswer.equalsIgnoreCase("I") && !yesOrNoAnswer.equalsIgnoreCase("N"));
+        } while (!yesOrNoAnswer.equalsIgnoreCase("Y") && !yesOrNoAnswer.equalsIgnoreCase("N"));
         return yesOrNoAnswer;
     }
 
@@ -34,40 +34,40 @@ public class ErrorHandler {
         String yesOrNoOrDeleteAnswer;
         do {
             yesOrNoOrDeleteAnswer = UserInputUtils.readFromUser("\n" + question);
-            if (!yesOrNoOrDeleteAnswer.equalsIgnoreCase("I") &&
+            if (!yesOrNoOrDeleteAnswer.equalsIgnoreCase("Y") &&
                     !yesOrNoOrDeleteAnswer.equalsIgnoreCase("N") &&
-                    !yesOrNoOrDeleteAnswer.equalsIgnoreCase("T")) {
-                System.out.println(RED.getColorCode() + "IGEN/NEM, vagy TÖRLÉS választ kérek!" + RESET.getColorCode());
+                    !yesOrNoOrDeleteAnswer.equalsIgnoreCase("D")) {
+                System.out.println(RED.getColorCode() + "Please enter \"YES\", \"NO\", or \"DELETE\"!" + RESET.getColorCode());
             }
-        } while (!yesOrNoOrDeleteAnswer.equalsIgnoreCase("I") &&
+        } while (!yesOrNoOrDeleteAnswer.equalsIgnoreCase("Y") &&
                 !yesOrNoOrDeleteAnswer.equalsIgnoreCase("N") &&
-                !yesOrNoOrDeleteAnswer.equalsIgnoreCase("T"));
+                !yesOrNoOrDeleteAnswer.equalsIgnoreCase("D"));
         return yesOrNoOrDeleteAnswer;
     }
 
     public static void validateName(String name) {
         if (name.length() < 3) {
-            System.out.println(RED.getColorCode() + "A névnek minimum 3 karakternek kell lennie!\n" + RESET.getColorCode());
+            System.out.println(RED.getColorCode() + "The name must be at least 3 characters long!\n" + RESET.getColorCode());
         }
         if (name.contains(","))
-            System.out.println(RED.getColorCode() + "A név nem tartalmazhat \",\" karaktert!\n" + RESET.getColorCode());
+            System.out.println(RED.getColorCode() + "The name cannot contain a \",\" character!\n" + RESET.getColorCode());
     }
 
     public static void validateQuantity(int quantity) {
         if (quantity < 1) {
-            System.out.println(RED.getColorCode() + "\nA termék darabszámának legalább 1-nek kell lennie!" + RESET.getColorCode());
+            System.out.println(RED.getColorCode() + "\nThe product quantity must be at least 1!" + RESET.getColorCode());
         }
     }
 
     public static void validateNonNegativeQuantity(int quantity) {
         if (quantity < 0) {
-            System.out.println(RED.getColorCode() + "\nNem lehet egy termékből 0-nál kevesebb!" + RESET.getColorCode());
+            System.out.println(RED.getColorCode() + "\nThe quantity of a product cannot be less than 0!" + RESET.getColorCode());
         }
     }
 
     public static void validatePrice(int unitPrice) {
         if (unitPrice < 0) {
-            System.out.println(RED.getColorCode() + "A termék értéke nem lehet mínusz összeg!" + RESET.getColorCode());
+            System.out.println(RED.getColorCode() + "The product value cannot be a negative amount!" + RESET.getColorCode());
         }
     }
 }

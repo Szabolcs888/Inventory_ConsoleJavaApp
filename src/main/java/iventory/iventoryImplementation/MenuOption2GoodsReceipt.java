@@ -20,7 +20,8 @@ public class MenuOption2GoodsReceipt {
             if (!isProductInList(inputProductName)) {
                 addNewProduct(inputProductName);
             }
-            askAddOrModifyProduct = ErrorHandler.getYesOrNoAnswer("Szeretnél újabb terméket hozzáadni, vagy meglévőnek a darabszámát módosítani? (I/N)");
+            askAddOrModifyProduct = ErrorHandler.getYesOrNoAnswer(
+                    "Would you like to add a new product or modify the quantity of an existing one? (Y/N)");
             System.out.println();
         } while (!askAddOrModifyProduct.equalsIgnoreCase("N"));
     }
@@ -28,7 +29,7 @@ public class MenuOption2GoodsReceipt {
     private String getProductName() {
         String inputProductName;
         do {
-            inputProductName = UserInputUtils.readFromUser("Kérem a termék nevét:");
+            inputProductName = UserInputUtils.readFromUser("Please enter the product name:");
             ErrorHandler.validateName(inputProductName);
         } while (!ValidationUtils.isValidName(inputProductName));
         return inputProductName;
@@ -58,10 +59,10 @@ public class MenuOption2GoodsReceipt {
 
     private void askUserForProductAction(String productName, int productIndex) {
         String askAddOrRemoveProduct = ErrorHandler.getYesOrNoOrDeleteAnswer(
-                "Szeretnél hozzáadni vagy elvenni a termékből (I/N)? A nyilvántartásból való törléshez nyomd meg a \"T\"-t!");
-        if (askAddOrRemoveProduct.equalsIgnoreCase("I")) {
+                "Would you like to add to or subtract from the product quantity? (Y/N) To delete from the inventory, press \"D\"!");
+        if (askAddOrRemoveProduct.equalsIgnoreCase("Y")) {
             modifyProductQuantityLoop(productName, productIndex);
-        } else if (askAddOrRemoveProduct.equalsIgnoreCase("T")) {
+        } else if (askAddOrRemoveProduct.equalsIgnoreCase("D")) {
             deleteProduct(productIndex);
         }
     }
@@ -71,24 +72,25 @@ public class MenuOption2GoodsReceipt {
         do {
             updateProductQuantity(productName, productIndex);
             modifyProductAnswerAgain = ErrorHandler.getYesOrNoAnswer(
-                    "Szeretnéd még a(z) " + productName + " darabszámát módosítani? (I/N)");
+                    "Would you like to modify the " + productName + " quantity further? (Y/N)");
         } while (!modifyProductAnswerAgain.equalsIgnoreCase("N"));
     }
 
     private void deleteProduct(int productIndex) {
         String productNameForDeletion = ProductRepository.getProductList().get(productIndex).productName;
         String deleteConfirmation = ErrorHandler.getYesOrNoAnswer(
-                RED.getColorCode() + "Biztosan TÖRÖLNI szeretnéd a(z) " + productNameForDeletion + " nevű terméket a nyilvántartásból? (I/N)" + RESET.getColorCode());
-        if (deleteConfirmation.equalsIgnoreCase("I")) {
+                RED.getColorCode() + "Are you sure you want to DELETE the product named " +
+                        productNameForDeletion + " from the inventory? (Y/N)" + RESET.getColorCode());
+        if (deleteConfirmation.equalsIgnoreCase("Y")) {
             ProductRepository.getProductList().remove(ProductRepository.getProductList().get(productIndex));
-            System.out.println("\nAz elem törlésre került!");
+            System.out.println("\nThe item has been deleted!");
         }
     }
 
     private int getProductPrice() {
         int unitPrice;
         do {
-            unitPrice = ErrorHandler.getValidNumber("\nKérem a termék árát:");
+            unitPrice = ErrorHandler.getValidNumber("\nPlease enter the product price:");
             ErrorHandler.validatePrice(unitPrice);
         } while (unitPrice < 0);
         return unitPrice;
@@ -97,7 +99,7 @@ public class MenuOption2GoodsReceipt {
     private int getProductQuantity() {
         int quantity;
         do {
-            quantity = ErrorHandler.getValidNumber("\nKérem a termék darabszámát:");
+            quantity = ErrorHandler.getValidNumber("\nPlease enter the product quantity:");
             ErrorHandler.validateQuantity(quantity);
         } while (quantity < 1);
         return quantity;
@@ -112,14 +114,14 @@ public class MenuOption2GoodsReceipt {
         } while (newQuantity < 0);
         setNewQuantity(productIndex, newQuantity);
         ProductDisplayHelper.displayProductInfoAfterSellAndUpdateGoodsReceipt(
-                productIndex, "A TERMÉK ADATAI A BEVÉTELEZÉSI TRANZAKCIÓ UTÁN:");
+                productIndex, "PRODUCT INFORMATION AFTER RECEIPT TRANSACTION:");
     }
 
     private int getQuantityModification(String productName, int productIndex) {
         if (ProductRepository.getProductList().get(productIndex).quantity != 0) {
-            return ErrorHandler.getValidNumber("\nMennyivel növeljük, vagy csökkentsük a(z) " + productName + " darabszámát?");
+            return ErrorHandler.getValidNumber("\nBy how much should we increase or decrease the " + productName + " quantity?");
         } else {
-            return ErrorHandler.getValidNumber("\nMennyivel növeljük a(z) " + productName + " darabszámát?");
+            return ErrorHandler.getValidNumber("\nBy how much should we increase the " + productName + " quantity?");
         }
     }
 
@@ -130,6 +132,6 @@ public class MenuOption2GoodsReceipt {
 
     private void setNewQuantity(int productIndex, int newQuantity) {
         ProductRepository.getProductList().get(productIndex).setQuantity(newQuantity);
-        System.out.println("\nA módosítás megtörtént!");
+        System.out.println("\nThe modification has been made!");
     }
 }

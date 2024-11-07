@@ -20,7 +20,7 @@ public class DataLoader {
 
     public static void loadProductsFromFile() {
         System.out.print("\nChecking the database of products : ");
-        List<String> productListFromFile = FileUtils.readFromFile("src/main/resources/productList.txt");
+        List<String> productListFromFile = FileUtils.readFromFile("src/main/resources/inventoryData/productList.txt");
         for (String line : productListFromFile) {
             String[] lineData = line.split(",");
             String productName = lineData[0];
@@ -34,7 +34,7 @@ public class DataLoader {
 
     public static void loadCustomersFromFile() {
         System.out.print("Checking the database of customers: ");
-        List<String> customerListFromFile = FileUtils.readFromFile("src/main/resources/customerList.txt");
+        List<String> customerListFromFile = FileUtils.readFromFile("src/main/resources/inventoryData/customerList.txt");
         for (String line : customerListFromFile) {
             String[] rowData = line.split(",");
             String customerName = rowData[0];
@@ -47,7 +47,7 @@ public class DataLoader {
 
     public static void loadTransactionsFromFile() {
         System.out.print("Checking the database of transactions : ");
-        List<String> transactionListFromFile = FileUtils.readFromFile("src/main/resources/transactionList.txt");
+        List<String> transactionListFromFile = FileUtils.readFromFile("src/main/resources/inventoryData/transactionList.txt");
         for (String line : transactionListFromFile) {
             String[] rowData = line.split(",");
             String transactionId = rowData[0];
