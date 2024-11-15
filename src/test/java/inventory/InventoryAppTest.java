@@ -17,14 +17,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class InventoryAppTest {
 
-    @BeforeEach
-    public void setUp() {
-    }
-
-    @AfterEach
-    public void tearDown() {
-    }
-
     @Test
     public void testMenuSelectionValidInput() {
         String simulatedInput = "3\n";
@@ -99,7 +91,6 @@ class InventoryAppTest {
         verify(mockGoodsReceipt, times(1)).goodsReceipt(anyString());
         verify(mockSaveData, times(1)).saveData();
     }
-
 
     @Test
     public void testTransactionSelectorCase3() {
