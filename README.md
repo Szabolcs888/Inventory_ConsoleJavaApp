@@ -7,7 +7,7 @@ The unit tests will also be uploaded soon.
 #
 #
 
-Ez egy k�szletnyilv�ntart� konzolalkalmaz�s, amely egy gyakorl�projekt keret�ben j�tt l�tre. A funkci�it tekintve regisztr�lja az �ruk�szlet bev�telez�s�t, t�rl�s�t, az �j �s megl�v� �gyfeleket �s a v�s�rl�sokat. Az adatok f�jlokb�l ker�lnek beolvas�sra �s egyel�re m�g list�kba vannak szervezve, de tervben van az adatb�zis integr�l�sa �s egy egyszer� frontend fel�let fejleszt�se is. A konzolon megjelen� inform�ci�k sz�nesek.
+Ez egy készletnyilvántartó konzolalkalmazás, amely egy gyakorlóprojekt keretében jött létre. A funkcióit tekintve regisztrálja az árukészlet bevételezését, törlését, az új és meglévő ügyfeleket és a vásárlásokat. Az adatok fájlokból kerülnek beolvasásra és egyelőre még listákba vannak szervezve, de tervben van az adatbázis integrálása és egy egyszerű frontend felület fejlesztése is. A konzolon megjelenő információk színesek.
 
-Hamarosan a unit tesztek is felt�lt�sre ker�lnek.
+Hamarosan a unit tesztek is feltöltésre kerülnek.
   
