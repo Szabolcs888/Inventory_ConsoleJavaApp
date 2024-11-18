@@ -22,7 +22,8 @@ public class MenuOption1Sell {
         do {
             if (!ProductRepository.getProductList().isEmpty()) {
                 processSale();
-                ProductDisplayHelper.displayProductInfoAfterSellAndUpdateGoodsReceipt(productIndex, "PRODUCT DATA AFTER THE TRANSACTION:");
+                ProductDisplayHelper.displayProductInfoAfterSellAndUpdateGoodsReceipt(productIndex,
+                        "PRODUCT DATA AFTER THE TRANSACTION:");
                 askAnotherSell = ErrorHandler.getYesOrNoAnswer("Would you like to register another sale? (Y/N)");
                 System.out.println();
             } else {
@@ -96,7 +97,8 @@ public class MenuOption1Sell {
         int availableQuantity = ProductRepository.getProductList().get(productIndex).getQuantity();
         while (availableQuantity - quantitySold < 0 || quantitySold < 1) {
             quantitySold = ErrorHandler.getValidNumber("\nPlease enter the quantity to be sold:");
-            ProductDisplayHelper.displayProductQuantityErrorMessage(productIndex, productName, availableQuantity, quantitySold);
+            ProductDisplayHelper.displayProductQuantityErrorMessage(
+                    productIndex, productName, availableQuantity, quantitySold);
         }
         return quantitySold;
     }
@@ -141,7 +143,8 @@ public class MenuOption1Sell {
         return customerId;
     }
 
-    private void transactionRegistration(boolean isRegisteredCustomer, String customerName, String customerId, String productName, int quantitySold) {
+    private void transactionRegistration(boolean isRegisteredCustomer, String customerName,
+                                         String customerId, String productName, int quantitySold) {
         int unitPrice = ProductRepository.getProductList().get(productIndex).getUnitPrice();
         String transactionId = "trId" + IdUtils.generateId();
         String transactionDate = DateUtils.getCurrentFormattedDate();

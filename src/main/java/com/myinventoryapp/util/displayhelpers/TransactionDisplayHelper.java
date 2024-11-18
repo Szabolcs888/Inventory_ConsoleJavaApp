@@ -35,8 +35,8 @@ public class TransactionDisplayHelper {
         else
             System.out.println("Customer name: " + customerName + " (" + customerId + " / newly registered)");
         System.out.println("Quantity sold: " + quantitySold +
-                "\nAmount paid: " + quantitySold + " * " + ProductRepository.getProductList().get(productIndex).unitPrice +
-                " = " + ProductRepository.getProductList().get(productIndex).unitPrice * quantitySold + " HUF" +
+                "\nAmount paid: " + quantitySold + " * " + ProductRepository.getProductList().get(productIndex).getUnitPrice() +
+                " = " + ProductRepository.getProductList().get(productIndex).getUnitPrice() * quantitySold + " HUF" +
                 "\nTransaction date: " + transactionDate);
     }
 }

@@ -33,10 +33,10 @@ public class ProductDisplayHelper {
 
     public static void displayProductInfoAfterGoodsReceipt(Product newProduct) {
         System.out.println(Colors.GREEN.getColorCode() + "\nTHE PRODUCT HAS BEEN ADDED TO THE INVENTORY:" + Colors.RESET.getColorCode());
-        System.out.println("Product name: " + newProduct.productName +
-                "\nProduct ID: " + newProduct.productId +
-                "\nUnit price: " + newProduct.unitPrice + " HUF" +
-                "\nAvailable quantity: " + newProduct.quantity);
+        System.out.println("Product name: " + newProduct.getProductName() +
+                "\nProduct ID: " + newProduct.getProductId() +
+                "\nUnit price: " + newProduct.getUnitPrice() + " HUF" +
+                "\nAvailable quantity: " + newProduct.getQuantity());
     }
 
     public static void displayProductNotFoundMessage(String productName, List<Product> productList) {
@@ -73,7 +73,7 @@ public class ProductDisplayHelper {
 
     public static void displayExistingProductInfo(Product product, String inputProductName) {
         displayProductInfo("THE PRODUCT NAMED " + inputProductName + " IS ALREADY IN THE INVENTORY. DETAILS:",
-                inputProductName, product.productId, product.unitPrice, product.quantity);
+                inputProductName, product.getProductId(), product.getUnitPrice(), product.getQuantity());
     }
 
     public static void displayOutOfStockMessage() {

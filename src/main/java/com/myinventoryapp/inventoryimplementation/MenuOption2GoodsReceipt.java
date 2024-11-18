@@ -46,9 +46,9 @@ public class MenuOption2GoodsReceipt {
         List<Product> productList = ProductRepository.getProductList();
         for (int productIndex = 0; productIndex < productList.size(); productIndex++) {
             Product product = productList.get(productIndex);
-            if (inputProductName.equalsIgnoreCase(product.productName)) {
+            if (inputProductName.equalsIgnoreCase(product.getProductName())) {
                 ProductDisplayHelper.displayExistingProductInfo(product, inputProductName);
-                askUserForProductAction(product.productName, productIndex);
+                askUserForProductAction(product.getProductName(), productIndex);
                 return true;
             }
         }
@@ -75,7 +75,7 @@ public class MenuOption2GoodsReceipt {
     }
 
     private void deleteProduct(int productIndex) {
-        String productNameForDeletion = ProductRepository.getProductList().get(productIndex).productName;
+        String productNameForDeletion = ProductRepository.getProductList().get(productIndex).getProductName();
         String deleteConfirmation = ErrorHandler.getYesOrNoAnswer(
                 Colors.RED.getColorCode() + "Are you sure you want to DELETE the product named " +
                         productNameForDeletion + " from the inventory? (Y/N)" + Colors.RESET.getColorCode());
@@ -116,7 +116,7 @@ public class MenuOption2GoodsReceipt {
     }
 
     private int getQuantityModification(String productName, int productIndex) {
-        if (ProductRepository.getProductList().get(productIndex).quantity != 0) {
+        if (ProductRepository.getProductList().get(productIndex).getQuantity() != 0) {
             return ErrorHandler.getValidNumber("\nBy how much should we increase or decrease the " + productName + " quantity?");
         } else {
             return ErrorHandler.getValidNumber("\nBy how much should we increase the " + productName + " quantity?");
@@ -124,7 +124,7 @@ public class MenuOption2GoodsReceipt {
     }
 
     private int calculateNewQuantity(int productIndex, int quantityModification) {
-        int quantity = ProductRepository.getProductList().get(productIndex).quantity;
+        int quantity = ProductRepository.getProductList().get(productIndex).getQuantity();
         return quantity + quantityModification;
     }
 

@@ -1,10 +1,10 @@
 package com.myinventoryapp.inventoryentities;
 
 public class Product {
-    public String productName;
-    public String productId;
-    public int unitPrice;
-    public int quantity;
+    private String productName;
+    private String productId;
+    private int unitPrice;
+    private int quantity;
 
     public Product(String productName, String productId, int unitPrice, int quantity) {
         this.productName = productName;

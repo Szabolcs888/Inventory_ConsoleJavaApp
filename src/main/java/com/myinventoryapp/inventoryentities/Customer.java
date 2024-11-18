@@ -1,9 +1,9 @@
 package com.myinventoryapp.inventoryentities;
 
 public class Customer {
-    public String customerName;
-    protected String customerId;
-    protected int totalPurchases;
+    private String customerName;
+    private String customerId;
+    private int totalPurchases;
 
     public Customer(String customerName, String customerId, int totalPurchases) {
         this.customerName = customerName;

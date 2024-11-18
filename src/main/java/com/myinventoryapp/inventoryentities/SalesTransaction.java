@@ -1,13 +1,13 @@
 package com.myinventoryapp.inventoryentities;
 
 public class SalesTransaction {
-    protected String transactionId;
-    protected String customerName;
-    protected String customerId;
-    protected String productName;
-    protected int quantitySold;
-    protected int unitPrice;
-    protected String transactionDate;
+    private String transactionId;
+    private String customerName;
+    private String customerId;
+    private String productName;
+    private int quantitySold;
+    private int unitPrice;
+    private String transactionDate;
 
     public SalesTransaction(String transactionId, String customerName, String customerId, String productName, int quantitySold, int unitPrice, String transactionDate) {
         this.transactionId = transactionId;
