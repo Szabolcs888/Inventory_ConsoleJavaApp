@@ -10,17 +10,17 @@ import com.myinventoryapp.inventoryentities.SalesTransaction;
 
 public class DataSaver {
 
-    public static void saveAllData() {
-        String productFile = FilePaths.PRODUCTS_FILE;
-        String customerFile = FilePaths.CUSTOMERS_FILE;
-        String transactionFile = FilePaths.TRANSACTIONS_FILE;
+    public void saveAllData() {
+        String productFile = FilePaths.getProductsFilePath();
+        String customerFile = FilePaths.getCustomersFilePath();
+        String transactionFile = FilePaths.getTransactionsFilePath();
 
         saveProductsToFile(productFile);
         saveCustomersToFile(customerFile);
         saveTransactionsToFile(transactionFile);
     }
 
-    public static void saveProductsToFile(String productFile) {
+    void saveProductsToFile(String productFile) {
         String productListContent = "";
         for (Product item : ProductRepository.getProductList()) {
             productListContent = productListContent + item.getProductName() + "," + item.getProductId() + "," + item.getUnitPrice() + "," + item.getQuantity() + "\n";
@@ -28,7 +28,7 @@ public class DataSaver {
         FileUtils.writeToFile(productListContent, productFile);
     }
 
-    public static void saveCustomersToFile(String customerFile) {
+    void saveCustomersToFile(String customerFile) {
         String customerListContent = "";
         for (Customer item : CustomerRepository.getCustomerList()) {
             customerListContent = customerListContent + item.getCustomerName() + "," + item.getTotalPurchases() + "," + item.getCustomerId() + "\n";
@@ -36,7 +36,7 @@ public class DataSaver {
         FileUtils.writeToFile(customerListContent, customerFile);
     }
 
-    public static void saveTransactionsToFile(String transactionFile) {
+    void saveTransactionsToFile(String transactionFile) {
         String transactionListContent = "";
         for (SalesTransaction item : SalesTransactionRepository.getSalesTransactionList()) {
             transactionListContent = transactionListContent + item.getTransactionId() + "," + item.getTransactionDate() + "," + item.getProductName() +

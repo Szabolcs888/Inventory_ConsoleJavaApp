@@ -12,7 +12,7 @@ public class SalesTransactionRepository {
         transactionList.add(salesTransaction);
     }
 
-    public static void clearSalesTransactionData() {
+    public static void clearSalesTransactionList() {
         transactionList.clear();
     }
 

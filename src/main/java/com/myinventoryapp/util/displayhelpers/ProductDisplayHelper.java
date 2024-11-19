@@ -23,7 +23,7 @@ public class ProductDisplayHelper {
         System.out.println();
     }
 
-    public static void displayProductInfo(String text, String productName, String productId, int unitPrice, int quantity) {
+    private static void displayProductInfo(String text, String productName, String productId, int unitPrice, int quantity) {
         System.out.println(Colors.GREEN.getColorCode() + "\n" + text + Colors.RESET.getColorCode());
         System.out.println("Product name: " + productName +
                 ", Product ID: " + productId +

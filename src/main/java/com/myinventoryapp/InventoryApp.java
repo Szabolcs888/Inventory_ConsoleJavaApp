@@ -32,7 +32,8 @@ public class InventoryApp {
     }
 
     public static void main(String[] args) {
-        DataLoader.loadAllData();
+        DataLoader dataLoader = new DataLoader();
+        dataLoader.loadAllData();
         InventoryApp app = new InventoryApp(
                 new MenuOption1Sell(),
                 new MenuOption2GoodsReceipt(),
@@ -45,7 +46,7 @@ public class InventoryApp {
         app.transactionSelector(userChoice);
     }
 
-    public int menuSelection(String text) {
+    int menuSelection(String text) {
         System.out.print(text);
         int userChoice;
         do {
@@ -62,7 +63,7 @@ public class InventoryApp {
         return userChoice;
     }
 
-    public void transactionSelector(int userChoice) {
+    void transactionSelector(int userChoice) {
         switch (userChoice) {
             case 1:
                 menuOption1Sell.sellProduct("\n-SELL PRODUCT MENU-\n");
@@ -94,27 +95,27 @@ public class InventoryApp {
                 Colors.GREEN_UNDERLINED.getColorCode() + "\n\nYou can choose from the following menu items:" + Colors.RESET.getColorCode();
     }
 
-    public void setMenuOption1Sell(MenuOption1Sell menuOption1Sell) {
+    void setMenuOption1Sell(MenuOption1Sell menuOption1Sell) {
         this.menuOption1Sell = menuOption1Sell;
     }
 
-    public void setMenuOption2GoodsReceipt(MenuOption2GoodsReceipt menuOption2GoodsReceipt) {
+    void setMenuOption2GoodsReceipt(MenuOption2GoodsReceipt menuOption2GoodsReceipt) {
         this.menuOption2GoodsReceipt = menuOption2GoodsReceipt;
     }
 
-    public void setMenuOption3DisplayProducts(MenuOption3DisplayProducts menuOption3DisplayProducts) {
+    void setMenuOption3DisplayProducts(MenuOption3DisplayProducts menuOption3DisplayProducts) {
         this.menuOption3DisplayProducts = menuOption3DisplayProducts;
     }
 
-    public void setMenuOption4DisplayCustomers(MenuOption4DisplayCustomers menuOption4DisplayCustomers) {
+    void setMenuOption4DisplayCustomers(MenuOption4DisplayCustomers menuOption4DisplayCustomers) {
         this.menuOption4DisplayCustomers = menuOption4DisplayCustomers;
     }
 
-    public void setMenuOption5DisplayTransactions(MenuOption5DisplayTransactions menuOption5DisplayTransactions) {
+    void setMenuOption5DisplayTransactions(MenuOption5DisplayTransactions menuOption5DisplayTransactions) {
         this.menuOption5DisplayTransactions = menuOption5DisplayTransactions;
     }
 
-    public void setMenuOption6SaveData(MenuOption6SaveData menuOption6SaveData) {
+    void setMenuOption6SaveData(MenuOption6SaveData menuOption6SaveData) {
         this.menuOption6SaveData = menuOption6SaveData;
     }
 }

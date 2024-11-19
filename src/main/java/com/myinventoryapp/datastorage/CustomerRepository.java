@@ -12,7 +12,7 @@ public class CustomerRepository {
         customerList.add(customer);
     }
 
-    public static void clearCustomerData() {
+    public static void clearCustomerList() {
         customerList.clear();
     }
 

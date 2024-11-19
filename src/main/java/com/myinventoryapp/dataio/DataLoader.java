@@ -12,19 +12,19 @@ import java.util.List;
 
 public class DataLoader {
 
-    public static void loadAllData() {
-        String productFile = FilePaths.PRODUCTS_FILE;
-        String customerFile = FilePaths.CUSTOMERS_FILE;
-        String transactionFile = FilePaths.TRANSACTIONS_FILE;
+    public void loadAllData() {
+        String productFilePath = FilePaths.getProductsFilePath();
+        String customersFilePath = FilePaths.getCustomersFilePath();
+        String transactionsFilePath = FilePaths.getTransactionsFilePath();
 
-        loadProductsFromFile(productFile);
-        loadCustomersFromFile(customerFile);
-        loadTransactionsFromFile(transactionFile);
+        loadProductsFromFile(productFilePath);
+        loadCustomersFromFile(customersFilePath);
+        loadTransactionsFromFile(transactionsFilePath);
     }
 
-    public static void loadProductsFromFile(String productsFile) {
+    void loadProductsFromFile(String productFilePath) {
         System.out.print("\nChecking the database of products : ");
-        List<String> productListFromFile = FileUtils.readFromFile(productsFile);
+        List<String> productListFromFile = FileUtils.readFromFile(productFilePath);
         for (String line : productListFromFile) {
             String[] lineData = line.split(",");
             String productName = lineData[0];
@@ -36,9 +36,9 @@ public class DataLoader {
         }
     }
 
-    public static void loadCustomersFromFile(String customersFile) {
+    void loadCustomersFromFile(String customersFilePath) {
         System.out.print("Checking the database of customers: ");
-        List<String> customerListFromFile = FileUtils.readFromFile(customersFile);
+        List<String> customerListFromFile = FileUtils.readFromFile(customersFilePath);
         for (String line : customerListFromFile) {
             String[] rowData = line.split(",");
             String customerName = rowData[0];
@@ -49,9 +49,9 @@ public class DataLoader {
         }
     }
 
-    public static void loadTransactionsFromFile(String transactionsFile) {
+    void loadTransactionsFromFile(String transactionsFilePath) {
         System.out.print("Checking the database of transactions : ");
-        List<String> transactionListFromFile = FileUtils.readFromFile(transactionsFile);
+        List<String> transactionListFromFile = FileUtils.readFromFile(transactionsFilePath);
         for (String line : transactionListFromFile) {
             String[] rowData = line.split(",");
             String transactionId = rowData[0];

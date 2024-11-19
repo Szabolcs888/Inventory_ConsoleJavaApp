@@ -16,7 +16,7 @@ public class ProductRepository {
         productList.remove(productIndex);
     }
 
-    public static void clearProductData() {
+    public static void clearProductList() {
         productList.clear();
     }
 
