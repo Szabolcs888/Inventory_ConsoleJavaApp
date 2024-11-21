@@ -1,5 +1,7 @@
 package com.myinventoryapp.inventoryentities;
 
+import java.util.Objects;
+
 public class Product {
     private String productName;
     private String productId;
@@ -46,5 +48,21 @@ public class Product {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return unitPrice == product.unitPrice &&
+                quantity == product.quantity &&
+                Objects.equals(productName, product.productName) &&
+                Objects.equals(productId, product.productId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(productName, productId, unitPrice, quantity);
     }
 }

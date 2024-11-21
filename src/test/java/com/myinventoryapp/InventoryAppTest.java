@@ -39,8 +39,8 @@ class InventoryAppTest {
 
     @Test
     public void testMenuSelectionInvalidInput() {
-        try (MockedStatic<ErrorHandler> mockErrorHandler = Mockito.mockStatic(ErrorHandler.class)) {
-            mockErrorHandler.when(() -> ErrorHandler.getValidNumber(anyString()))
+        try (MockedStatic<ErrorHandler> mockedErrorHandler = Mockito.mockStatic(ErrorHandler.class)) {
+            mockedErrorHandler.when(() -> ErrorHandler.getValidNumber(anyString()))
                     .thenReturn(0)
                     .thenReturn(3);
 

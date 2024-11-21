@@ -1,5 +1,7 @@
 package com.myinventoryapp.inventoryentities;
 
+import java.util.Objects;
+
 public class SalesTransaction {
     private String transactionId;
     private String customerName;
@@ -45,5 +47,24 @@ public class SalesTransaction {
 
     public String getTransactionDate() {
         return transactionDate;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SalesTransaction salesTransaction = (SalesTransaction) o;
+        return Objects.equals(transactionId, salesTransaction.transactionId) &&
+                Objects.equals(customerName, salesTransaction.customerName) &&
+                Objects.equals(customerId, salesTransaction.customerId) &&
+                Objects.equals(productName, salesTransaction.productName) &&
+                quantitySold == salesTransaction.quantitySold &&
+                unitPrice == salesTransaction.unitPrice &&
+                Objects.equals(transactionDate, salesTransaction.transactionDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(transactionId, customerName, customerId, productName, quantitySold, unitPrice, transactionDate);
     }
 }

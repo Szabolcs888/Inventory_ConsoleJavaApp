@@ -11,37 +11,44 @@ import com.myinventoryapp.inventoryentities.SalesTransaction;
 public class DataSaver {
 
     public void saveAllData() {
-        String productFile = FilePaths.getProductsFilePath();
-        String customerFile = FilePaths.getCustomersFilePath();
-        String transactionFile = FilePaths.getTransactionsFilePath();
+        String productFilePath = FilePaths.getProductsFilePath();
+        String customersFilePath = FilePaths.getCustomersFilePath();
+        String transactionsFilePath = FilePaths.getTransactionsFilePath();
 
-        saveProductsToFile(productFile);
-        saveCustomersToFile(customerFile);
-        saveTransactionsToFile(transactionFile);
+        saveProductsToFile(productFilePath);
+        saveCustomersToFile(customersFilePath);
+        saveTransactionsToFile(transactionsFilePath);
     }
 
-    void saveProductsToFile(String productFile) {
+    void saveProductsToFile(String productFilePath) {
         String productListContent = "";
         for (Product item : ProductRepository.getProductList()) {
-            productListContent = productListContent + item.getProductName() + "," + item.getProductId() + "," + item.getUnitPrice() + "," + item.getQuantity() + "\n";
+            productListContent = productListContent +
+                    item.getProductName() + "," + item.getProductId() + "," +
+                    item.getUnitPrice() + "," + item.getQuantity() + "\n";
         }
-        FileUtils.writeToFile(productListContent, productFile);
+        FileUtils.writeToFile(productListContent, productFilePath);
     }
 
-    void saveCustomersToFile(String customerFile) {
+    void saveCustomersToFile(String customersFilePath) {
         String customerListContent = "";
         for (Customer item : CustomerRepository.getCustomerList()) {
-            customerListContent = customerListContent + item.getCustomerName() + "," + item.getTotalPurchases() + "," + item.getCustomerId() + "\n";
+            customerListContent = customerListContent +
+                    item.getCustomerName() + "," + item.getTotalPurchases() + "," +
+                    item.getCustomerId() + "\n";
         }
-        FileUtils.writeToFile(customerListContent, customerFile);
+        FileUtils.writeToFile(customerListContent, customersFilePath);
     }
 
-    void saveTransactionsToFile(String transactionFile) {
+    void saveTransactionsToFile(String transactionsFilePath) {
         String transactionListContent = "";
         for (SalesTransaction item : SalesTransactionRepository.getSalesTransactionList()) {
-            transactionListContent = transactionListContent + item.getTransactionId() + "," + item.getTransactionDate() + "," + item.getProductName() +
-                    "," + item.getQuantitySold() + "," + item.getUnitPrice() + "," + item.getCustomerName() + "," + item.getCustomerId() + "\n";
+            transactionListContent = transactionListContent +
+                    item.getTransactionId() + "," + item.getTransactionDate() + "," +
+                    item.getProductName() + "," + item.getQuantitySold() + "," +
+                    item.getUnitPrice() + "," + item.getCustomerName() + "," +
+                    item.getCustomerId() + "\n";
         }
-        FileUtils.writeToFile(transactionListContent, transactionFile);
+        FileUtils.writeToFile(transactionListContent, transactionsFilePath);
     }
 }

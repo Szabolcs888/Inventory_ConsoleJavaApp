@@ -23,7 +23,7 @@ public class DataLoader {
     }
 
     void loadProductsFromFile(String productFilePath) {
-        System.out.print("\nChecking the database of products : ");
+        System.out.print("\nChecking the database of products: ");
         List<String> productListFromFile = FileUtils.readFromFile(productFilePath);
         for (String line : productListFromFile) {
             String[] lineData = line.split(",");
@@ -50,7 +50,7 @@ public class DataLoader {
     }
 
     void loadTransactionsFromFile(String transactionsFilePath) {
-        System.out.print("Checking the database of transactions : ");
+        System.out.print("Checking the database of transactions: ");
         List<String> transactionListFromFile = FileUtils.readFromFile(transactionsFilePath);
         for (String line : transactionListFromFile) {
             String[] rowData = line.split(",");
@@ -60,9 +60,9 @@ public class DataLoader {
             int quantitySold = Integer.parseInt(rowData[3]);
             int unitPrice = Integer.parseInt(rowData[4]);
             String customerName = rowData[5];
-            String customerID = rowData[6];
+            String customerId = rowData[6];
             SalesTransaction salesTransaction = new SalesTransaction(
-                    transactionId, customerName, customerID, productName, quantitySold, unitPrice, transactionDate);
+                    transactionId, customerName, customerId, productName, quantitySold, unitPrice, transactionDate);
             SalesTransactionRepository.addSalesTransaction(salesTransaction);
         }
     }
